@@ -1,13 +1,20 @@
-//llamamos a Express
-var express = require('express') 
-var app = express()
-// establecemos nuestro puerto               
-var port = process.env.PORT || 8080  
+var express = require('express') //llamamos a Express
+var cors = require('cors')
+require('./db')
+var app = express()       
+var bodyParser = require('body-parser')        
 
+var port = process.env.PORT || 8080  // establecemos nuestro puerto
 
-app.get('/', function(req, res) {
-  res.json({ mensaje: '¡Hola Mundo!' })   
-})
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())            
 
+// nuestra ruta irá en http://localhost:8080/api
+// es bueno que haya un prefijo, sobre todo por el tema de versiones de la API
+var router = require('./routes')
+app.use('/api', router)
+
+//arrancamos el servidor
 app.listen(port)
 console.log('API escuchando en el puerto ' + port)

@@ -4,7 +4,7 @@
   "description": "Ejemplo de api mediante node.js, express y mongodb",
   "main": "index.js",
   "scripts": {
-    "start": "node app/server.js",
+    "start": "nodemon app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +18,13 @@
   },
   "homepage": "https://github.com/juanda99/ejemplo-de-api#readme",
   "devDependencies": {
-    "eslint": "^3.13.1"
+    "eslint": "^3.13.1",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.6"
   }
 }
